@@ -1,40 +1,39 @@
 # Serve
 
-> 使用 `flask_restful` 库风格快速编写轻量级后端 `WEB` 项目，下面提供三种部署 `WSGI` 项目的方案
+> Use the `flask_restful` Library to quickly write a lightweight backend web WSGI project. The deployment plan at each stage is provided below.
 
-## 运行方式
+## Operation mode
 
-### 开发/测试：Develop 模式
+### Development/Test：Developer mode
 
 ![image](https://user-images.githubusercontent.com/58482090/199562435-5ff456ab-dce8-4591-addb-167a533f729e.png)
 
 ```shell
-# 开发者模式运行，不产生pyc缓存文件
+# No pyc cache file
 root@web-server:/serve# python3 -B app.py
 
-# 安装命令
+# Installation command
 root@web-server:/serve# apt-get install curl jq
 
-# 测试请求
-root@web-server:/serve# curl -s http://127.0.0.1/api/test | jq .
+# Test request
+root@web-server:/serve# curl -s http://127.0.0.1/api/hello | jq .
 ```
 
-### 预发布：Gunicorn 启动
+### Stage: Gunicorn Start
 
 ![image](https://user-images.githubusercontent.com/58482090/199562838-8bc81c39-29c5-451d-9570-fcf3bbef0f64.png)
 
 ```shell
 root@web-server:/serve# shell/start.sh 
 
-  已成功启动服务！
+  The service has been successfully started!
 
 root@web-server:/serve# shell/stop.sh 
 
-  已停止全部服务！
+  Stop all services!
 ```
 
-### 生产: Supervisor 托管
+### Production: Use Supervisor for service hosting
 
-`Flask` + `Gunicorn` + `Supervisor` + `Nginx` 部署 `Prod` 环境
-
+`Flask` + `Gunicorn` + `Supervisor` + `Nginx`
 
